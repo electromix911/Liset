@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Liset 💖</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff9ecf,#ffd6ec);
+}
+
+.card{
+    background:white;
+    width:90%;
+    max-width:420px;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(0,0,0,0.2);
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    color:#ff1493;
+    font-size:32px;
+}
+
+p{
+    font-size:21px;
+    color:#444;
+    line-height:1.5;
+}
+
+button{
+    padding:13px 22px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    background:#ff1493;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+#foto{
+    display:none;
+    margin-top:20px;
+}
+
+#foto img{
+    width:250px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+#pregunta{
+    display:none;
+    margin-top:20px;
+}
+
+#respuesta{
+    margin-top:20px;
+    font-size:28px;
+    color:#ff1493;
+    font-weight:bold;
+}
+
+.heart{
+    position:absolute;
+    color:#ff1493;
+    font-size:25px;
+    animation:flotar 6s linear infinite;
+}
+
+@keyframes flotar{
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>💖 Para Liset 💖</h1>
+
+<p>
+Bonita ✨<br><br>
+¿Salgamos el domingo? 🫠<br><br>
+Prometo que será una cita bonita contigo 💕
+</p>
+
+<button onclick="mostrarFoto()">
+Ver tu foto 📸
+</button>
+
+<button onclick="mostrarPregunta()">
+¿Aceptas salir conmigo? 💌
+</button>
+
+<div id="foto">
+    <!-- Cambia liset.jpg por el nombre de su foto -->
+    <img src="liset.jpg" alt="Liset">
+</div>
+
+<div id="pregunta">
+
+<h2>💖 ¿Será una cita? 💖</h2>
+
+<button onclick="respuestaSi()">
+Sí 🥺
+</button>
+
+<button onclick="respuestaNo()">
+Tal vez 😅
+</button>
+
+<div id="respuesta"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function mostrarFoto(){
+    document.getElementById("foto").style.display="block";
+}
+
+function mostrarPregunta(){
+    document.getElementById("pregunta").style.display="block";
+}
+
+function respuestaSi(){
+    document.getElementById("respuesta").innerHTML=
+    "💖 Sabía que dirías que sí bonita ✨";
+}
+
+function respuestaNo(){
+    document.getElementById("respuesta").innerHTML=
+    "😅 Bueno... igual te invitaré un cevichito jaja 💕";
+}
+
+function crearCorazon(){
+
+    const heart=document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML="💖";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=(20+Math.random()*25)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(crearCorazon,400);
+
+</script>
+
+</body>
+</html>
